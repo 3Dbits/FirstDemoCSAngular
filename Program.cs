@@ -1,3 +1,6 @@
+using FirstDemoCSAngular.Context;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -8,6 +11,8 @@ builder.Services.AddControllers()
                 {
                     options.JsonSerializerOptions.Converters.Add(new DateOnlyJsonConverter());
                 });
+builder.Services.AddDbContext<NewContext>(options =>
+        options.UseNpgsql(builder.Configuration.GetConnectionString("SampleDbConnection")));
 
 var app = builder.Build();
 
