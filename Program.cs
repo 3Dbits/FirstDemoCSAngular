@@ -25,8 +25,13 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
+
+app.MapControllers();
 app.UseRouting();
 
+// app.MapControllerRoute(
+//    name: "NewModel",
+//    pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.MapControllerRoute(
     name: "default",
